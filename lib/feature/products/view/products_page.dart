@@ -1,7 +1,7 @@
-
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:homewrksta/core/model/handilling.dart';
 import 'package:homewrksta/feature/products/bloc/products_bloc.dart';
 
 class ProductsPage extends StatelessWidget {
@@ -33,7 +33,7 @@ class ProductsPage extends StatelessWidget {
                 );
               }else if(state is ErroreState){
                 return const Center(child: Text("There is no internet yet"));
-              }else{return CircularProgressIndicator();}
+              }else{return const CircularProgressIndicator();}
             },
           ),
         );
