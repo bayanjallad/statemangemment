@@ -14,9 +14,15 @@ class ProductServiceImp extends ProductService {
     try {
       response = await dio.get(basUrl);
       if (response.statusCode == 200) {
-        List<ProductModel> products = List.generate(response.data.length,
-            (index) => ProductModel.fromJson(response.data[index]));
+        List<ProductModel> products = List.generate(
+          response.data.length,
+          (index) => ProductModel.fromJson(
+            response.data[index],
+          ),
+        );
+      
         return Listof(data: products);
+        
       } else {
         return ErrorModel(message: "There is No Internet");
       }
