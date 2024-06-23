@@ -8,7 +8,7 @@ import 'package:hive/hive.dart';
 
 class ProductsPage extends StatelessWidget {
   ProductsPage({super.key});
-  late Box myBox;
+ 
 
 
 

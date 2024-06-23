@@ -13,10 +13,10 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ProductsBloc() : super(LodingState()) {
     on<GetProductsEvent>((event, emit) async {
     
-      var result = await ProductServiceImp().getProducts();
+      ResultModel result = await ProductServiceImp().getProducts();
        print(productsBox.get("products"));
       
-      if (result is Listof<dynamic>) {
+      if (result is Listof<ProductModel>) {
         emit(SuccessGetProductsState(products: result.data));
       } else {
         emit(ErroreState());

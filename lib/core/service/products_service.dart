@@ -14,19 +14,21 @@ abstract class ProductService extends Coreservice {
 class ProductServiceImp extends ProductService {
   @override
   Future<ResultModel> getProducts() async {
-    // Box productsBox = await Hive.openBox<ProductModel>("productsBox");
+    
     try {
       response = await dio.get(basUrl);
       if (response.statusCode == 200) {
-        List<dynamic> products = List.generate(
+        List<ProductModel> products = List.generate(
           response.data.length,
           (index) => ProductModel.fromJson(
             response.data[index],
           ),
         );
-         productsBox.delete("products");
-        productsBox.put("products", products);
+      productsBox.put("products",products);
         return Listof(data: products);
+        
+
+        
       } else {
         return ErrorModel(message: "There is No Internet");
       }
