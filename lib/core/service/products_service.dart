@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:hive/hive.dart';
 import 'package:homewrksta/core/model/handilling.dart';
 import 'package:homewrksta/core/model/products_model.dart';
 import 'package:homewrksta/core/service/core_service.dart';
+
+import '../../main.dart';
 
 abstract class ProductService extends Coreservice {
   String basUrl = "https://freetestapi.com/api/v1/products";
@@ -11,18 +14,19 @@ abstract class ProductService extends Coreservice {
 class ProductServiceImp extends ProductService {
   @override
   Future<ResultModel> getProducts() async {
+    // Box productsBox = await Hive.openBox<ProductModel>("productsBox");
     try {
       response = await dio.get(basUrl);
       if (response.statusCode == 200) {
-        List<ProductModel> products = List.generate(
+        List<dynamic> products = List.generate(
           response.data.length,
           (index) => ProductModel.fromJson(
             response.data[index],
           ),
         );
-      
+         productsBox.delete("products");
+        productsBox.put("products", products);
         return Listof(data: products);
-        
       } else {
         return ErrorModel(message: "There is No Internet");
       }

@@ -11,7 +11,7 @@ class LodingState extends ProductsState {}
 class ErroreState extends ProductsState{}
 
 class SuccessGetProductsState extends ProductsState {
-List<ProductModel> products; 
+List<dynamic> products; 
   SuccessGetProductsState({
     required this.products,
   });

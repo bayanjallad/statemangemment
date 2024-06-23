@@ -4,15 +4,19 @@ import 'package:homewrksta/core/model/products_model.dart';
 import 'package:homewrksta/core/service/products_service.dart';
 import 'package:meta/meta.dart';
 
+import '../../../main.dart';
+
 part 'products_event.dart';
 part 'products_state.dart';
 
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ProductsBloc() : super(LodingState()) {
     on<GetProductsEvent>((event, emit) async {
-     // emit(LodingState());
-      ResultModel result = await ProductServiceImp().getProducts();
-      if (result is Listof<ProductModel>) {
+    
+      var result = await ProductServiceImp().getProducts();
+       print(productsBox.get("products"));
+      
+      if (result is Listof<dynamic>) {
         emit(SuccessGetProductsState(products: result.data));
       } else {
         emit(ErroreState());

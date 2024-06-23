@@ -1,8 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-class HiveObject{}
 
-class ResultModel  extends HiveObject{}
+class ResultModel  {}
 
 class ErrorModel extends ResultModel {
   String message;
@@ -18,7 +17,7 @@ class ExceptionModel extends ResultModel {
   });
 }
 
-class Listof<T extends ResultModel> extends ResultModel {
+class Listof<T> extends ResultModel {
   List<T> data;
   Listof({
     required this.data,

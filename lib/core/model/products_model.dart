@@ -2,21 +2,21 @@
 import 'package:homewrksta/core/model/handilling.dart';
 import 'package:hive/hive.dart';
 import 'dart:convert';
-part 'products_model.g.dart';
 
-@HiveType(typeId: 0)
+
+//@HiveType(typeId: 0)
 class ProductModel extends ResultModel {
-  @HiveField(0)
+  //@HiveField(0)
   final int id;
-  @HiveField(1)
+  //@HiveField(1)
   final String name;
-  @HiveField(2)
+  //@HiveField(2)
   final String description;
-  @HiveField(3)
+  //@HiveField(3)
   final double price;
-  @HiveField(4)
+  //@HiveField(4)
   final String image;
-  @HiveField(5)
+ // @HiveField(5)
   final String brand;
 
   ProductModel({

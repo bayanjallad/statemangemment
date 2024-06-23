@@ -6,14 +6,16 @@ import 'package:homewrksta/feature/products/view/products_page.dart';
 
 import 'package:hive/hive.dart';
 
+import 'core/model/product_model_apapter.dart';
 import 'core/model/products_model.dart';
 
+late Box productsBox;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  Hive.registerAdapter(ProductModelAdapter());
-  Box productsBox = await Hive.openBox<ProductModel>("productsBox");
-  // await initialiseHive();
+  Hive.registerAdapter(productTypeAdapter());
+  productsBox = await Hive.openBox<ProductModel>("productsBox");
+
   Bloc.observer = MyBlocObserver();
 
   runApp(MyApp());
