@@ -14,7 +14,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     on<GetProductsEvent>((event, emit) async {
     
       ResultModel result = await ProductServiceImp().getProducts();
-       print(productsBox.get("products"));
+        print(productsBox!.get("products"));
       
       if (result is Listof<ProductModel>) {
         emit(SuccessGetProductsState(products: result.data));

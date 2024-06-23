@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -9,12 +10,14 @@ import 'package:hive/hive.dart';
 import 'core/model/product_model_apapter.dart';
 import 'core/model/products_model.dart';
 
-late Box productsBox;
+Box? productsBox;
+ 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(productTypeAdapter());
-  productsBox = await Hive.openBox<ProductModel>("productsBox");
+  productsBox = await Hive.openBox("productsBox");
+   
 
   Bloc.observer = MyBlocObserver();
 
